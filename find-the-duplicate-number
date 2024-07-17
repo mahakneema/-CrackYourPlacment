@@ -1,0 +1,29 @@
+class Solution {
+    public int findDuplicate(int[] nums) 
+    {
+        // Arrays.sort(nums);
+        // for(int i=1;i<nums.length;i++)
+        // {
+           
+        //         if(nums[i]==nums[i-1])
+        //         {
+        //             return nums[i];
+        //         }
+            
+        // }
+        // return nums[nums.length-1];
+        HashMap<Integer,Integer> h1 = new HashMap<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            h1.put(nums[i],h1.getOrDefault(nums[i],0)+1);
+        }
+        for(Map.Entry<Integer,Integer>m1:h1.entrySet())
+        {
+            if(m1.getValue()>1)
+            {
+                return m1.getKey();
+            }
+        }
+        return 0;
+    }
+}
