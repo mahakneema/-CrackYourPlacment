@@ -1,0 +1,50 @@
+class Solution {
+    public int subarraysDivByK(int[] nums, int k) 
+    {
+    //     int count = 0;
+    //     for(int i=0;i<nums.length;i++)
+    //     {
+    //        int sum = 0;
+    //         for(int j=i;j<nums.length;j++)
+    //         {
+    //              sum = sum + nums[j];
+
+    //              if(sum%k==0)
+    //              {
+    //                 count++;
+    //              } 
+                               
+    //          }
+            
+    //     }
+    //  return count;
+    
+
+    // optimsed 
+     int count = 0;
+        int sum = 0;
+        HashMap<Integer, Integer> h1 = new HashMap<>();
+          
+       // To handle subarrays that are themselves divisible by k
+       h1.put(0, 1);
+        
+        for (int num : nums) 
+        {
+            sum += num;
+            int re = sum % k;
+            
+            if (re < 0)
+             {
+                re += k; //reminder is postive
+            }
+            
+            // Add the count of subarrays seen so far with the same remainder
+            count += h1.getOrDefault(re, 0);
+            // Update the map with the current remainder count
+            h1.put(re, h1.getOrDefault(re, 0) + 1);
+        }
+        
+        return count;
+    
+    }
+}
