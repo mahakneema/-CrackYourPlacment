@@ -1,0 +1,58 @@
+class Solution {
+    public List<Integer> findDuplicates(int[] nums)
+     
+     {
+         int i=0;
+         while(i<nums.length)
+         {
+             int correct  =  nums[i]-1;
+             if(nums[i]!=nums[correct])
+             {
+                 swap(nums,i,correct);
+             }
+             else
+             {
+                 i++;
+             }
+        }
+        List <Integer> l1 = new ArrayList<>();
+        for(int j=0;j<nums.length;j++)
+        {
+            if(nums[j]!=j+1)
+            {
+             l1.add(nums[j]);
+            }
+           
+        }
+
+        return l1;  
+        
+    }
+    public void swap(int [] nums, int first,int second)
+    {
+        int temp = nums[first];
+        nums[first] = nums[second];
+        nums[second] = temp ;
+    }
+}
+
+//////////////////////////////////////////
+2 solution
+///////////////////////////////
+{ 
+    HashMap<Integer,Integer>h1 = new HashMap<>();
+    List<Integer>l1 = new ArrayList<>();
+    for(int i=0;i<nums.length;i++)
+    {
+        h1.put(nums[i],h1.getOrDefault(nums[i],0)+1);
+    }
+    for(Map.Entry<Integer,Integer>m1:h1.entrySet())
+    {
+        if(m1.getValue()>1)
+        {
+            l1.add(m1.getKey());
+        }
+    }
+    return l1;
+   }
+
