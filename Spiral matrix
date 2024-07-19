@@ -1,0 +1,52 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) 
+    {
+         List<Integer> l1 = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) {
+            return l1;
+        }
+        
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int top = 0, bottom = row - 1, left = 0, right = col - 1;
+        
+        while (top <= bottom && left <= right)
+         {
+            // Traverse from left to right along the top row
+            for (int i = left; i <= right; i++) 
+            {
+                l1.add(matrix[top][i]);
+            }
+            top++;
+            
+            // Traverse from top to bottom along the right column
+            for (int i = top; i <= bottom; i++)
+             {
+                l1.add(matrix[i][right]);
+            }
+            right--;
+            
+            // Traverse from right to left along the bottom row (if still within bounds)
+            if (top <= bottom)
+             {
+                for (int i = right; i >= left; i--) 
+                {
+                    l1.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+            
+            // Traverse from bottom to top along the left column (if still within bounds)
+            if (left <= right) 
+            {
+                for (int i = bottom; i >= top; i--) 
+                {
+                    l1.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        
+        return l1;
+    }
+}
