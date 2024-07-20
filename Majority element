@@ -1,0 +1,21 @@
+class Solution {
+    public int majorityElement(int[] a) 
+    {
+        // Arrays.sort(nums);
+        // return nums[nums.length/2];
+        HashMap<Integer,Integer>h1 = new HashMap<>();
+         for(int i=0;i<a.length;i++)
+         {
+             h1.put(a[i],h1.getOrDefault(a[i],0)+1);
+         }
+         for(Map.Entry<Integer,Integer> m1:h1.entrySet())
+         {
+             if(m1.getValue() > a.length / 2)
+             {
+                 return m1.getKey();
+             }
+         }
+         return -1;
+    
+    }
+}
