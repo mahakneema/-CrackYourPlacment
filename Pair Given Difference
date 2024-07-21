@@ -1,0 +1,37 @@
+////////////////////////////////////////////////brute force////////////////////////////////////
+class Solution {
+    public int findPair(int n, int x, int[] arr) 
+    {
+        int count=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            for(int j=i+1;j<arr.length;j++)
+            {
+                if(Math.abs(arr[i]-arr[j])==x)
+                {
+                    count++;
+                    
+                }
+               
+            }
+        }
+        if(count<0)
+        {
+            return 1;
+        }
+        return -1;
+        
+    }
+}
+/////////////////////////////////////////////////////////ioptimised //////////////////////////////////////////////
+HashSet<Integer>h1 = new HashSet<>();
+        for(int n : arr)
+        {
+            if(h1.contains(n+x) || h1.contains(n-x))
+            {
+                return 1;
+            }
+            h1.add(n);
+        }
+        return -1;
+
