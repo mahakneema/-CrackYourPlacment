@@ -1,0 +1,24 @@
+class Solution {
+    public int countSeniors(String[] details) 
+    {
+        int count = 0;
+        for(String str:details)
+        {
+            int ans = str.charAt(11);
+            if(ans>'6')
+            {
+                count++;
+            }
+            else if(ans=='6')
+            {
+                if(str.charAt(12)>'0')
+                {
+                    count++;
+                }
+            }
+
+        }
+        return count;
+        
+    }
+}
