@@ -1,0 +1,31 @@
+h1.entrySet() returns a set of entries from the HashMap h1. Each entry is a key-value pair where the key is a Character and the value is an Integer.
+new ArrayList<>(h1.entrySet()) creates a new ArrayList containing all the entries from the HashMap.
+The List<Map.Entry<Character, Integer>> l1 is a list of map entries that allows us to manipulate and sort the entries more easily.
+
+l1.sort(...) sorts the list l1 in place.
+The sorting uses a lambda expression as a comparator: (e1, e2) -> e2.getValue().compareTo(e1.getValue()).
+e1 and e2 are two entries (Map.Entry<Character, Integer>) being compared.
+e2.getValue() gets the value (frequency) of the second entry.
+e1.getValue() gets the value (frequency) of the first entry.
+e2.getValue().compareTo(e1.getValue()) compares the frequencies:
+If e2.getValue() is greater than e1.getValue(), it returns a positive number, indicating that e2 should come before e1.
+If e2.getValue() is less than e1.getValue(), it returns a negative number, indicating that e1 should come before e2.
+If e2.getValue() is equal to e1.getValue(), it returns 0, indicating that their order does not need to be changed.
+This results in sorting the list in descending order of frequencies.
+
+h1 = {'e': 3, 'x': 1, 'a': 2, 'm': 1, 'p': 1, 'l': 1}
+Convert to List:
+
+h1.entrySet() returns a set of entries: [('e', 3), ('x', 1), ('a', 2), ('m', 1), ('p', 1), ('l', 1)].
+new ArrayList<>(h1.entrySet()) converts this set into a list.
+Sort the List:
+
+Before sorting: [('e', 3), ('x', 1), ('a', 2), ('m', 1), ('p', 1), ('l', 1)].
+After sorting: [('e', 3), ('a', 2), ('x', 1), ('m', 1), ('p', 1), ('l', 1)].
+The sorted list now has entries ordered by their frequencies in descending order. This sorted list will be used in subsequent steps to distribute the letters to keys in a way that minimizes the total number of key presses.
+
+
+
+
+
+
